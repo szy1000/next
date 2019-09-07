@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "koa": "^2.8.1",
     "next": "^9.0.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
@@ -10,7 +11,7 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "dev": "node server",
+    "dev": "node service.js",
     "start": "next",
     "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 1"
