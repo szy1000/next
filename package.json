@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "antd": "^3.23.2",
     "ioredis": "^4.14.0",
     "koa": "^2.8.1",
     "koa-router": "^7.4.0",
@@ -12,6 +13,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "babel-plugin-import": "^1.12.1",
     "nodemon": "^1.19.2"
   },
   "scripts": {
