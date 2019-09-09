@@ -1,8 +1,8 @@
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { Button } from 'antd'
 import Head from 'next/head'
 import Router, { withRouter } from 'next/router'
-
 const events = [
   'routerChangeStart',
   'routerChangeComplete',
@@ -17,12 +17,14 @@ const makeEvent = (type) => (...args) => console.log(type, ...args)
 events.forEach(event => {
   Router.events.on(event, makeEvent(event))
 })
+
+const LazyComp = dynamic(import('../components/Lazy'))
 const Index = (props) => <div>
   <Head>
     <title>Home Page</title>
 
   </Head>
-
+  <LazyComp />
   <Link href='/about'>
     <a>about</a>
   </Link>
@@ -33,7 +35,7 @@ const Index = (props) => <div>
     }
   `}
   </style>
-  
+
   <style jsx global>
     {`
     body {
