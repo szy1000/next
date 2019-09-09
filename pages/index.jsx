@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic'
 import { Button } from 'antd'
 import Head from 'next/head'
 import Router, { withRouter } from 'next/router'
+
+import show from '../utils/tools'
 const events = [
   'routerChangeStart',
   'routerChangeComplete',
@@ -22,7 +24,6 @@ const LazyComp = dynamic(import('../components/Lazy'))
 const Index = (props) => <div>
   <Head>
     <title>Home Page</title>
-
   </Head>
   <LazyComp />
   <Link href='/about'>
@@ -49,7 +50,10 @@ const Index = (props) => <div>
 </div>
 
 Index.getInitialProps = async () => {
+  // const show = await import('../utils/tools')
+  // show.default()
   console.log('-------------')
+  show()
   return { age: 28 }
 }
 
