@@ -2,11 +2,19 @@ const Koa = require('koa')
 const Router = require('koa-router')
 const next = require('next')
 
+// const os = require('os')
+// console.log('你的剩余内存/M'+os.freemem()/1024/1024);
+// console.log('你的CPU'+os.arch());
+
 const dev = process.env.NODE_ENV !== 'production'
 
 const app = next({ dev })
 
 const handle = app.getRequestHandler()
+
+// console.log('你的剩余内存/M'+os.freemem()/1024/1024);
+// console.log('你的CPU'+os.arch());
+
 
 app.prepare().then(() => {
   const server = new Koa()
@@ -19,6 +27,11 @@ app.prepare().then(() => {
       query: { name }
     })
     ctx.respond = false
+  })
+
+  router.get('/api/index', (ctx) => {
+    ctx.body = {success: true}
+    ctx.set('Content-Type', 'application/json')
   })
 
   server.use(router.routes())

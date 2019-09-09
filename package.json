@@ -15,7 +15,8 @@
   "devDependencies": {
     "@zeit/next-css": "^1.0.1",
     "babel-plugin-import": "^1.12.1",
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.2",
+    "os": "^0.1.1"
   },
   "scripts": {
     "dev": "nodemon service.js",
