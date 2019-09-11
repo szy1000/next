@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { Button } from 'antd'
 import Head from 'next/head'
@@ -26,9 +25,6 @@ const Index = (props) => <div>
     <title>Home Page</title>
   </Head>
   <LazyComp />
-  <Link href='/about'>
-    <a>about</a>
-  </Link>
   <style jsx>
   {`
     h1 {

@@ -1,4 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
+import Link from 'next/link'
 
 class MyDocument extends Document{
 
@@ -14,9 +15,12 @@ class MyDocument extends Document{
         <Head>
         </Head>
         <body>
+          <ul>
+            <li><Link href='/index' as='/index'><a>Index</a></Link></li>
+            <li><Link href='/about' as='/about'><a>About</a></Link></li>
+            <li><Link href='/hooks' as='/hooks'><a>hooks</a></Link></li>
+          </ul>
           <Main />
-          <div>a</div>
-          <div>b</div>
           <NextScript />
         </body>
       </html>
