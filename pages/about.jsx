@@ -1,13 +1,13 @@
 import Link from 'next/link'
+import {connect} from 'react-redux'
 import Router from 'next/router'
 import { Button } from 'antd'
 
 
-import {connect} from 'react-redux'
 
 class About extends React.Component{
   render() {
-    const {person: {age}} = this.props
+    const {person: {age}, dispatch} = this.props
     return (
       <div>
         <Link href='/index?name=szy' as='/index/szy'>
@@ -21,11 +21,16 @@ class About extends React.Component{
             id: 2
           }
         })} }>hoc</Button>
+        <Button onClick={() => dispatch({
+          type: 'update',
+          data: {
+            age: 33
+          }
+        })}>dispatch</Button>
       </div>
     )
   }
 }
 export default connect(
   state => ({...state}),
-
 )(About)
