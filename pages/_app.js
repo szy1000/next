@@ -1,11 +1,12 @@
 import App, {Container} from 'next/app'
+import { Provider } from 'react-redux'
+import store from '../store/store'
 // import React from 'react'
 
 import 'antd/dist/antd.css'
 
 class MyApp extends App{
   static async getInitialProps({ Component, ctx }) {
-    console.log('app init')
     let pageProps = {}
     if(Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
@@ -18,7 +19,9 @@ class MyApp extends App{
   render() {
     const {Component, pageProps} = this.props
     return <Container>
-      <Component {...pageProps}/>
+      <Provider store={store}>
+        <Component {...pageProps}/>
+      </Provider>
     </Container>
   }
 }

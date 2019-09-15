@@ -1,9 +1,17 @@
 import dynamic from 'next/dynamic'
 import { Button } from 'antd'
 import Head from 'next/head'
+// import store from  '../store/store'
 import Router, { withRouter } from 'next/router'
 
-import show from '../utils/tools'
+//2种引入方式
+// import show from '../utils/tools'
+// show()
+
+//异步引入
+// const show = await import('../utils/tools')
+// show.default()
+
 const events = [
   'routerChangeStart',
   'routerChangeComplete',
@@ -18,6 +26,11 @@ const makeEvent = (type) => (...args) => console.log(type, ...args)
 events.forEach(event => {
   Router.events.on(event, makeEvent(event))
 })
+
+// store.subscribe(() => {
+//   console.log('change:', store.getState())
+// })
+
 
 const LazyComp = dynamic(import('../components/Lazy'))
 const Index = (props) => <div>
@@ -46,10 +59,8 @@ const Index = (props) => <div>
 </div>
 
 Index.getInitialProps = async () => {
-  // const show = await import('../utils/tools')
-  // show.default()
-  console.log('-------------')
-  show()
+
+
   return { age: 28 }
 }
 
