@@ -6,6 +6,14 @@ import { Button } from 'antd'
 
 
 class About extends React.Component{
+
+   showTim = async () => {
+    // await import('moment').then(res => console.log(res))
+    // const moment = await import('moment')
+    //  console.log(moment)
+    //  moment.default()
+  }
+
   render() {
     const {person: {age}, dispatch} = this.props
     return (
@@ -13,6 +21,8 @@ class About extends React.Component{
         <Link href='/index?name=szy' as='/index/szy'>
           <a>index</a>
         </Link>
+        <div onClick={this.showTim}>webpack dynamic</div>
+        {/*{this.showTim()}*/}
         <p>{age}</p>
         <Button onClick={() => { Router.push('/index') } }>hello</Button>
         <Button onClick={() => { Router.push({

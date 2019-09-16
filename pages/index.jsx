@@ -3,14 +3,13 @@ import { Button } from 'antd'
 import Head from 'next/head'
 // import store from  '../store/store'
 import Router, { withRouter } from 'next/router'
-
 //2种引入方式
 // import show from '../utils/tools'
 // show()
 
 //异步引入
-// const show = await import('../utils/tools')
-// show.default()
+
+
 
 const events = [
   'routerChangeStart',
@@ -32,12 +31,13 @@ events.forEach(event => {
 // })
 
 
-const LazyComp = dynamic(import('../components/Lazy'))
+// const LazyComp = dynamic(import('../components/Lazy'))
+// import LazyComp from '../components/Lazy'
 const Index = (props) => <div>
   <Head>
     <title>Home Page</title>
   </Head>
-  <LazyComp />
+  {/*<LazyComp />*/}
   <style jsx>
   {`
     h1 {
@@ -54,14 +54,21 @@ const Index = (props) => <div>
   `}
   </style>
   <h1 className='hello'>Welcome {props.router.query.name}</h1>
-  <Button>hello</Button>
+  <Button onClick={ async () => {
+    const mom = await import('moment')
+    console.log(typeof mom)
+    console.log(mom.default(1568613206000).format('YYYY'))
+    const show = await import('../utils/tools')
+    console.log(typeof show)
+
+    // show.default()
+  }
+  }>hello</Button>
   Age: {props.age}
 </div>
 
 Index.getInitialProps = async () => {
-
-
-  return { age: 28 }
+  return { age: 28, }
 }
 
 export default withRouter(Index)
